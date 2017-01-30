@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2><%= action %> Curso</h2>
+          </div>
+          <div class="panel-body">
+            <%= form_for(@course) do |course| %>
+
+              <% if @course.errors.any? %>
+                <div class="error_explanation">
+                  <h2><%= pluralize(@course.errors.count, "error")%> won´t let this course to being saved:</h2>
+
+                  <ul>
+                    <% @course.errors.full_messages.each do |message| %>
+                      <li class="danger"><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class= "form-group">
+                    <%= course.label :title %>
+                    <%= course.text_field :title, class: 'form-control' %>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <%= course.label :description %>
+                    <%= course.text_area :description,size: "30x10", class: 'form-control markdown-editable' %>
+                  </div>
+                </div>
+              </div>
+              <div class="actions">
+                <%= link_to raw('<span class="glyphicon glyphicon-remove"></span> Cancel'), courses_path, class: 'btn btn-primary btn-large' %>
+                <%= button_tag(type: "submit", class: "btn btn-success btn-large", name: "Save Course", value: "Save Course") do %>
+                  <span class="glyphicon glyphicon-ok"></span> Save Course
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

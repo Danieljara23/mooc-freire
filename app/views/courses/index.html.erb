@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 ">
+        <h1 class="text-center">CURSOS</h1>
+        <% @courses.each do |course| %>
+          <h2><%= course.title %></h2>
+          <p class="text-justify"><%= truncate(course.description, :length => 250) %></p>
+          <p><%= link_to 'View',course %></p>
+          <p>
+            <%= link_to 'Edit',edit_course_path(course) %>
+            <%= link_to 'Remove',course, method: :delete,data: {confirm: 'Are you sure to delete this course'} %>
+          </p>
+        <% end %>
+    </div>
+  </div>
+</div>
